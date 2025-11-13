@@ -8,18 +8,19 @@ Este projeto é um protótipo em Python que simula um sistema de controle de qua
 
 A arquitetura da solução é baseada em **Programação Orientada a Objetos (POO)** para um gerenciamento de estado eficaz, permitindo que o sistema "lembre" das peças e caixas entre as interações do usuário.
 
-* **Classe `LinhaDeMontagem`**: É o "cérebro" do sistema. Esta classe encapsula (armazena) todas as listas de dados (peças cadastradas, caixas de aprovadas, peças reprovadas) e o contador de IDs. Todos os métodos para manipular esses dados (inspecionar, adicionar, remover, gerar relatório) estão contidos nesta classe.
+- **Classe `LinhaDeMontagem`**: É o "cérebro" do sistema. Esta classe encapsula (armazena) todas as listas de dados (peças cadastradas, caixas de aprovadas, peças reprovadas) e o contador de IDs. Todos os métodos para manipular esses dados (inspecionar, adicionar, remover, gerar relatório) estão contidos nesta classe.
 
-* **Loop Principal (`main()`)**: O script principal é responsável apenas por exibir o menu e capturar a entrada do usuário. Ele cria uma única instância da `LinhaDeMontagem` e chama os métodos apropriados dessa instância com base na escolha do usuário, sem nunca manipular os dados diretamente.
+- **Loop Principal (`main()`)**: O script principal é responsável apenas por exibir o menu e capturar a entrada do usuário. Ele cria uma única instância da `LinhaDeMontagem` e chama os métodos apropriados dessa instância com base na escolha do usuário, sem nunca manipular os dados diretamente.
 
 Essa separação de responsabilidades (Interface vs. Lógica de Negócio) torna o código limpo, organizado e fácil de manter.
 
 ### Critérios de Qualidade (Regras de Negócio)
 
 Para ser **Aprovada**, a peça deve satisfazer TODAS as seguintes condições:
-* **Peso:** Entre 95g e 105g (inclusive).
-* **Cor:** "azul" ou "verde" (não sensível a maiúsculas).
-* **Comprimento:** Entre 10cm e 20cm (inclusive).
+
+- **Peso:** Entre 95g e 105g (inclusive).
+- **Cor:** "azul" ou "verde" (não sensível a maiúsculas).
+- **Comprimento:** Entre 10cm e 20cm (inclusive).
 
 Peças aprovadas são armazenadas em caixas com capacidade para **10 peças**.
 
@@ -27,11 +28,12 @@ Peças aprovadas são armazenadas em caixas com capacidade para **10 peças**.
 
 ### Pré-requisitos
 
-* Você precisa ter o **Python 3.7** (ou superior) instalado em sua máquina.
+- Você precisa ter o **Python 3.7** (ou superior) instalado em sua máquina.
 
 ### Passo a Passo
 
 1.  **Clone o repositório** (ou apenas salve o arquivo `.py` em um diretório):
+
     ```bash
     git clone [https://github.com/Cemanuels/Sistema-de-Controle-de-Producao-e-Qualidade.git](https://github.com/Cemanuels/Sistema-de-Controle-de-Producao-e-Qualidade.git)
     cd Sistema-de-Controle-de-Producao-e-Qualidade
@@ -40,10 +42,11 @@ Peças aprovadas são armazenadas em caixas com capacidade para **10 peças**.
 2.  **Navegue até o diretório** que contém o script.
 
 3.  **Execute o script** através do seu terminal:
+
     ```bash
     # No Windows
     python sistema.py
-    
+
     # No macOS / Linux
     python3 sistema.py
     ```
@@ -78,3 +81,236 @@ Peça adicionada à Caixa 1 (Ocupação: 1/10).
 Peça ID 1 cadastrada e processada com sucesso.
 
 Pressione [Enter] para continuar...
+
+```
+
+### 2. Cadastro de Peça Reprovada, listagem de peças, listagem de caixas e geração de relatório
+
+```text
+=============================================
+   Sistema de Controle de Produção e Qualidade
+=============================================
+1. Cadastrar nova peça
+2. Listar peças aprovadas/reprovadas
+3. Remover peça cadastrada
+4. Listar caixas fechadas
+5. Gerar relatório final
+0. Sair do Sistema
+---------------------------------------------
+Escolha uma opção: 1
+
+--- [1] Cadastrar Nova Peça ---
+Digite o peso (em gramas, ex: 101.5): 60
+Digite a cor (azul/verde): azul
+Digite o comprimento (em cm, ex: 15.0): 14
+
+Inspecionando Peça ID: 1...
+Status: REPROVADA ❌ (Motivos: Peso fora do padrão (95-105g))
+
+Peça ID 1 cadastrada e processada com sucesso.
+
+Pressione [Enter] para continuar...
+
+=============================================
+   Sistema de Controle de Produção e Qualidade
+=============================================
+1. Cadastrar nova peça
+2. Listar peças aprovadas/reprovadas
+3. Remover peça cadastrada
+4. Listar caixas fechadas
+5. Gerar relatório final
+0. Sair do Sistema
+---------------------------------------------
+Escolha uma opção: 2
+
+--- [2] Listar Peças Aprovadas/Reprovadas ---
+
+🟢 Peças APROVADAS (distribuídas nas caixas):
+Nenhuma peça aprovada ainda.
+   [Total Aprovadas: 0]
+
+🔴 Peças REPROVADAS:
+   - ID: 1 (Peso: 60.0g, Cor: azul, Comp: 14.0cm)
+     Motivos: Peso fora do padrão (95-105g)
+   [Total Reprovadas: 1]
+
+Pressione [Enter] para continuar...
+
+=============================================
+   Sistema de Controle de Produção e Qualidade
+=============================================
+1. Cadastrar nova peça
+2. Listar peças aprovadas/reprovadas
+3. Remover peça cadastrada
+4. Listar caixas fechadas
+5. Gerar relatório final
+0. Sair do Sistema
+---------------------------------------------
+Escolha uma opção: 4
+
+--- [4] Listar Caixas Fechadas ---
+Nenhuma caixa foi fechada (capacidade máxima) ainda.
+
+Pressione [Enter] para continuar...
+
+=============================================
+   Sistema de Controle de Produção e Qualidade
+=============================================
+1. Cadastrar nova peça
+2. Listar peças aprovadas/reprovadas
+3. Remover peça cadastrada
+4. Listar caixas fechadas
+5. Gerar relatório final
+0. Sair do Sistema
+---------------------------------------------
+Escolha uma opção: 5
+
+==================================================
+       [5] RELATÓRIO CONSOLIDADO DE PRODUÇÃO
+==================================================
+Total de Peças Processadas (na sessão): 1
+Total de Peças Cadastradas (na lista mestre): 1
+--------------------------------------------------
+🟢 Total de Peças APROVADAS: 0
+📦 Total de Caixas Utilizadas: 0
+--------------------------------------------------
+🔴 Total de Peças REPROVADAS: 1
+
+   Detalhes da Reprovação (Contagem individual de falhas):
+      - Peso fora do padrão (95-105g): 1 ocorrência(s)
+==================================================
+
+Pressione [Enter] para continuar...
+
+```
+
+### 3. Cadastro de peças aprovadas e reprovadas, remoção de peças e geração de relatório
+
+```text
+
+=============================================
+   Sistema de Controle de Produção e Qualidade
+=============================================
+1. Cadastrar nova peça
+2. Listar peças aprovadas/reprovadas
+3. Remover peça cadastrada
+4. Listar caixas fechadas
+5. Gerar relatório final
+0. Sair do Sistema
+---------------------------------------------
+Escolha uma opção: 1
+
+--- [1] Cadastrar Nova Peça ---
+Digite o peso (em gramas, ex: 101.5): 100
+Digite a cor (azul/verde): azul
+Digite o comprimento (em cm, ex: 15.0): 98
+
+Inspecionando Peça ID: 1...
+Status: REPROVADA ❌ (Motivos: Comprimento fora do padrão (10-20cm))
+
+Peça ID 1 cadastrada e processada com sucesso.
+
+Pressione [Enter] para continuar...
+
+=============================================
+   Sistema de Controle de Produção e Qualidade
+=============================================
+1. Cadastrar nova peça
+2. Listar peças aprovadas/reprovadas
+3. Remover peça cadastrada
+4. Listar caixas fechadas
+5. Gerar relatório final
+0. Sair do Sistema
+---------------------------------------------
+Escolha uma opção: 1
+
+--- [1] Cadastrar Nova Peça ---
+Digite o peso (em gramas, ex: 101.5): 100
+Digite a cor (azul/verde): azul
+Digite o comprimento (em cm, ex: 15.0): 16
+
+Inspecionando Peça ID: 2...
+Status: APROVADA ✅
+Peça adicionada à Caixa 1 (Ocupação: 1/10).
+
+Peça ID 2 cadastrada e processada com sucesso.
+
+Pressione [Enter] para continuar...
+
+=============================================
+   Sistema de Controle de Produção e Qualidade
+=============================================
+1. Cadastrar nova peça
+2. Listar peças aprovadas/reprovadas
+3. Remover peça cadastrada
+4. Listar caixas fechadas
+5. Gerar relatório final
+0. Sair do Sistema
+---------------------------------------------
+Escolha uma opção: 1
+
+--- [1] Cadastrar Nova Peça ---
+Digite o peso (em gramas, ex: 101.5): 96
+Digite a cor (azul/verde): verde
+Digite o comprimento (em cm, ex: 15.0): 17
+
+Inspecionando Peça ID: 3...
+Status: APROVADA ✅
+Peça adicionada à Caixa 1 (Ocupação: 2/10).
+
+Peça ID 3 cadastrada e processada com sucesso.
+
+Pressione [Enter] para continuar...
+
+=============================================
+   Sistema de Controle de Produção e Qualidade
+=============================================
+1. Cadastrar nova peça
+2. Listar peças aprovadas/reprovadas
+3. Remover peça cadastrada
+4. Listar caixas fechadas
+5. Gerar relatório final
+0. Sair do Sistema
+---------------------------------------------
+Escolha uma opção: 3
+
+--- [3] Remover Peça Cadastrada ---
+Digite o ID da peça que deseja remover: 2
+Peça ID 2 removida com sucesso do sistema.
+   (Removida da caixa de aprovadas)
+
+Pressione [Enter] para continuar...
+
+=============================================
+   Sistema de Controle de Produção e Qualidade
+=============================================
+1. Cadastrar nova peça
+2. Listar peças aprovadas/reprovadas
+3. Remover peça cadastrada
+4. Listar caixas fechadas
+5. Gerar relatório final
+0. Sair do Sistema
+---------------------------------------------
+Escolha uma opção: 5
+
+==================================================
+       [5] RELATÓRIO CONSOLIDADO DE PRODUÇÃO
+==================================================
+Total de Peças Processadas (na sessão): 2
+Total de Peças Cadastradas (na lista mestre): 2
+--------------------------------------------------
+🟢 Total de Peças APROVADAS: 1
+📦 Total de Caixas Utilizadas: 1
+
+   Distribuição das Caixas:
+      - Caixa 1 [ABERTA]: 1 / 10 peças
+--------------------------------------------------
+🔴 Total de Peças REPROVADAS: 1
+
+   Detalhes da Reprovação (Contagem individual de falhas):
+      - Comprimento fora do padrão (10-20cm): 1 ocorrência(s)
+==================================================
+
+Pressione [Enter] para continuar...
+
+```
